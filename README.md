@@ -72,3 +72,7 @@ APP_ORIGIN=https://example.com EMAIL_ADAPTER=resend RESEND_API_KEY=… docker co
 ```
 
 Put it behind a reverse proxy that terminates TLS, and set `TRUSTED_PROXY_HEADER` (for example `x-forwarded-for`) so rate limits see real client addresses. Rate limits are kept in memory, so they assume one web process; switch Better Auth's `rateLimit.storage` to `database` before running more than one.
+
+## License
+
+MIT. See [LICENSE](LICENSE).
