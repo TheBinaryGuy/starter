@@ -13,7 +13,27 @@ A full-stack TypeScript monorepo to start web projects from: TanStack Start, Ely
 - **Security headers**: a per-request nonce Content Security Policy, HSTS on HTTPS, no framing.
 - **Tooling**: Turborepo, Oxlint, Oxfmt, TypeScript 7, Vitest against a real Postgres, Playwright, GitHub Actions, Docker Compose.
 
-## Start
+## Start with an agent
+
+Paste this into Claude Code, Codex or another coding agent, in the folder where the project should live. Replace `<project-name>` first, or leave it and the agent will ask.
+
+```text
+Start a new project called <project-name> from the TheBinaryGuy/starter template, and get it running on this machine.
+
+1. Check the prerequisites: Bun 1.4.4 or newer (`bun --version`), Docker running (`docker info`), and the GitHub CLI signed in (`gh auth status`). If one is missing, stop and tell me what to install.
+2. Create the repository from the template and clone it: `gh repo create <project-name> --template TheBinaryGuy/starter --private --clone`, then work inside that folder. If I can't use the template, clone https://github.com/TheBinaryGuy/starter.git into <project-name>, delete its .git folder and run `git init` instead.
+3. Read AGENTS.md and README.md before changing anything, and follow AGENTS.md from then on.
+4. Run `bun install`, then `bun run setup`, which writes .env with fresh secrets. Set APP_NAME in .env to the project's name.
+5. Check whether ports 5173 (app), 5434 (Postgres), 1025 and 8025 (Mailpit) are already in use (`lsof -iTCP -sTCP:LISTEN -P`). For each one that is taken, pick a free port and update .env to match: PORT and APP_ORIGIN for the app; POSTGRES_PORT and the port inside DATABASE_URL for Postgres; MAILPIT_SMTP_PORT, SMTP_PORT and MAILPIT_WEB_PORT for Mailpit.
+6. Run `bun run infra:up` and `bun run db:migrate`.
+7. Run `bun run check` and `bun run test`. Both must pass; if one fails, find out why and fix it before going on.
+8. Start the dev server with `bun run dev` and confirm that http://localhost:<PORT>/api/health answers {"status":"ok"}.
+9. Prove sign-in works: sign up in the browser, open the confirmation email in Mailpit (http://localhost:<MAILPIT_WEB_PORT>), follow its link and check that it lands on /app signed in. Or run `bun run e2e`, which does the same.
+
+Don't commit or push anything. When you're done, tell me the app's URL, the Mailpit URL, any ports you changed, and anything that didn't work.
+```
+
+## Start by hand
 
 You need [Bun](https://bun.sh) 1.4.4 or newer and Docker.
 
