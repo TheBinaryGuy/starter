@@ -1,0 +1,19 @@
+README.md
+  s_fc53798adf0b11::t_bb8533f9387768 24,26-27,41,43
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "a95f05f169325fc7921143854972ff713e445612",
+  "prompts": {},
+  "sessions": {
+    "s_fc53798adf0b11": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a19e02-1c54-78b3-9253-9338a328deec",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "TheBinaryGuy <hello@thebinary.dev>"
+    }
+  }
+}
