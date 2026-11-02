@@ -1,4 +1,5 @@
 import { boolean, index, pgTable, text, timestamp, uuid } from 'drizzle-orm/pg-core';
+import { timestamps } from './columns';
 
 /*
  * Better Auth's core tables (better-auth.com/docs/concepts/database). Ids are
@@ -6,14 +7,6 @@ import { boolean, index, pgTable, text, timestamp, uuid } from 'drizzle-orm/pg-c
  * @repo/auth). A plugin that adds tables or columns needs them here too, then
  * `bun run db:generate`.
  */
-
-const timestamps = {
-    createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
-    updatedAt: timestamp('updated_at', { withTimezone: true })
-        .notNull()
-        .defaultNow()
-        .$onUpdate(() => new Date()),
-};
 
 export const user = pgTable('user', {
     id: uuid('id').primaryKey().defaultRandom(),

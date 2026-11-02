@@ -1,9 +1,10 @@
 import '@/lib/server-only';
 import { auth, CLIENT_ADDRESS_HEADER, clientAddress } from '@repo/auth/server';
-import { db } from '@repo/db';
+import { db, todosRepository, type Todo } from '@repo/db';
+import { TODO_TITLE_MAX } from '@repo/db/schema';
 import { appEnv } from '@repo/env/app';
 import { sanitizeFailure } from '@repo/logging';
-import { Elysia, NotFound, ParseError, ValidationError } from 'elysia';
+import { Elysia, NotFound, ParseError, t, ValidationError } from 'elysia';
 import { useRequest } from 'nitro/context';
 
 import { useLogger } from '@/lib/logging.server';
@@ -49,6 +50,23 @@ const requestContext = new Elysia({ name: 'api-context' })
     })
     .as('global');
 
+const uuidSchema = t.String({
+    pattern: '^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$',
+});
+/* Something other than spaces, and no longer than the database allows (it holds to the same limit). */
+const titleSchema = t.String({ minLength: 1, maxLength: TODO_TITLE_MAX, pattern: '\\S' });
+
+/* What the browser sees of a todo: no owner id, dates as ISO strings. */
+function todoView(row: Todo) {
+    return {
+        id: row.id,
+        title: row.title,
+        done: row.done,
+        createdAt: row.createdAt.toISOString(),
+        updatedAt: row.updatedAt.toISOString(),
+    };
+}
+
 export const apiApp = new Elysia({ prefix: '/api' })
     .use(requestContext)
     .get('/health', () => ({ status: 'ok' as const }))
@@ -62,10 +80,56 @@ export const apiApp = new Elysia({ prefix: '/api' })
             return status(503, { status: 'unavailable' as const });
         }
     })
-    // An example of a route behind sign-in. Replace it with your own.
     .get('/me', async ({ request }) => {
         const user = await requireUser(request);
         return { id: user.id, name: user.name, email: user.email };
+    })
+    /*
+     * The example todo app: every route behind sign-in, every row scoped to its
+     * owner in the repository. Writes pass the origin check in handleApiRequest.
+     */
+    .get('/todos', async ({ request }) => {
+        const user = await requireUser(request);
+        return { todos: (await todosRepository.listTodos(user.id)).map(todoView) };
+    })
+    .post(
+        '/todos',
+        { body: t.Object({ title: titleSchema }) },
+        async ({ request, body, status }) => {
+            const user = await requireUser(request);
+            try {
+                const created = await todosRepository.createTodo(user.id, body.title.trim());
+                return status(201, { todo: todoView(created) });
+            } catch (error) {
+                if (error instanceof todosRepository.TodoLimitError)
+                    throw new ApiError(error.message, 409, 'limit');
+                throw error;
+            }
+        },
+    )
+    .patch(
+        '/todos/:id',
+        {
+            params: t.Object({ id: uuidSchema }),
+            body: t.Object({ title: t.Optional(titleSchema), done: t.Optional(t.Boolean()) }),
+        },
+        async ({ request, params, body }) => {
+            const user = await requireUser(request);
+            if (body.title === undefined && body.done === undefined)
+                throw new ApiError('Change the title, the done state, or both.', 400, 'empty');
+            const updated = await todosRepository.updateTodo(user.id, params.id, {
+                ...(body.title === undefined ? {} : { title: body.title.trim() }),
+                ...(body.done === undefined ? {} : { done: body.done }),
+            });
+            if (!updated) throw new ApiError('That todo doesn’t exist.', 404, 'not-found');
+            return { todo: todoView(updated) };
+        },
+    )
+    .delete('/todos/:id', { params: t.Object({ id: uuidSchema }) }, async ({ request, params }) => {
+        const user = await requireUser(request);
+        if (!(await todosRepository.deleteTodo(user.id, params.id)))
+            throw new ApiError('That todo doesn’t exist.', 404, 'not-found');
+        return { id: params.id };
     });
 
 export type Api = typeof apiApp;

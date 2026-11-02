@@ -5,7 +5,8 @@ A full-stack TypeScript monorepo to start web projects from: TanStack Start, Ely
 ## What's inside
 
 - **Web** (`apps/web`): TanStack Start with SSR on Nitro, TanStack Router, Query and Form, Tailwind v4 and shadcn/ui (preset `b1Ymqvgiu`). Light, dark and system themes without a flash.
-- **API**: Elysia mounted at `/api`, typed end to end in the browser through Eden. `/api/health`, `/api/ready` and an example `/api/me` behind sign-in.
+- **API**: Elysia mounted at `/api`, typed end to end in the browser through Eden. Writes must come from the app's own origin as JSON, on top of Better Auth's SameSite cookie.
+- **Example app**: a todo list on `/app`, with `GET`, `POST`, `PATCH` and `DELETE` on `/api/todos`, every row scoped to its owner, a per-person limit that holds under concurrent requests, and tests for all of it. Keep it as a pattern or delete it.
 - **Auth** (`packages/auth`): Better Auth with email and password, required email confirmation, password reset, session list and sign-out elsewhere, account deletion, and optional GitHub and Google sign-in. Rate limited in production, keyed on an address the client can't spoof.
 - **Database** (`packages/db`): Drizzle ORM 1.0 on Postgres 18, with checked-in migrations.
 - **Email** (`packages/emails`): React Email templates sent through SMTP, Resend, or the log. Mailpit catches everything locally.
@@ -96,18 +97,30 @@ e2e                 Playwright tests
 
 - Set `APP_NAME` in `.env`; it names the page titles and emails.
 - Replace the landing page (`apps/web/src/routes/index.tsx`) and the home page (`routes/_authenticated/app/index.tsx`).
-- Add API routes to `apiApp` in `apps/web/src/lib/api.server.ts`; `requireUser(request)` gives you the signed-in user.
-- Add tables in `packages/db/src/schema`, then `bun run db:generate`.
+- Add API routes to `apiApp` in `apps/web/src/lib/api.server.ts`; `requireUser(request)` gives you the signed-in user. The todo routes there show the whole pattern.
+- Add tables in `packages/db/src/schema`, then `bun run db:generate`. `packages/db/src/todos.ts` is an example repository: every function takes the owner's id.
+- To remove the todo example: delete `components/todo-list.tsx`, the `/todos` routes, `packages/db/src/todos*.ts`, `schema/todos.ts` and its relation, `e2e/todos.spec.ts`, then `bun run db:generate -- --name drop_todos`.
 - For social sign-in, set `GITHUB_CLIENT_ID`/`SECRET` or `GOOGLE_CLIENT_ID`/`SECRET`; the buttons appear on their own. Callback URL: `<APP_ORIGIN>/api/auth/callback/<provider>`.
 - To change the look, apply another shadcn preset from `apps/web`: `bunx --bun shadcn@latest apply --preset <id>`.
 - The workspace scope is `@repo/*`; rename it with a find and replace if you like.
 
 ## Deploy
 
-`compose.yaml` runs Postgres, a one-shot migration job and the web server:
+`compose.yaml` runs Postgres, a one-shot migration job and the web server. Put the production values in their own file, never in git:
 
 ```bash
-APP_ORIGIN=https://example.com EMAIL_ADAPTER=resend RESEND_API_KEY=… docker compose up -d --build
+# .env.production
+POSTGRES_PASSWORD=…          # openssl rand -hex 16
+BETTER_AUTH_SECRET=…         # openssl rand -hex 32
+APP_NAME=My App
+APP_ORIGIN=https://example.com
+EMAIL_ADAPTER=resend
+EMAIL_FROM="My App <hello@example.com>"
+RESEND_API_KEY=…
+```
+
+```bash
+docker compose --env-file .env.production up -d --build --wait
 ```
 
 Put it behind a reverse proxy that terminates TLS, and set `TRUSTED_PROXY_HEADER` (for example `x-forwarded-for`) so rate limits see real client addresses. Rate limits are kept in memory, so they assume one web process; switch Better Auth's `rateLimit.storage` to `database` before running more than one.

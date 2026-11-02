@@ -20,6 +20,7 @@ Before editing files for a substantial task:
 
 - `apps/web`: TanStack Start on Nitro (Bun preset). Pages use directory routes (`login/route.tsx`, `_authenticated/app/index.tsx`), reusable UI lives in `components/`, helpers in `lib/`.
 - Elysia handlers live together in `apps/web/src/lib/api.server.ts`; `routes/api/$.ts` mounts them at `/api`. Better Auth answers everything under `/api/auth` itself. The browser calls Elysia through Eden (`lib/api-client.ts`) and Better Auth through `lib/auth-client.ts`.
+- Every API route that reads or writes a person's data calls `requireUser(request)` and passes the user's id to a repository function that scopes the query to it (see `packages/db/src/todos.ts`). Someone else's id answers 404, never 403. Writes are refused unless they come from `APP_ORIGIN` as JSON (`lib/origin-guard.ts`), so don't add form-encoded endpoints.
 - `packages/auth` holds the Better Auth config. A plugin that adds tables or columns needs them in `packages/db/src/schema` too, then `bun run db:generate`.
 - Schema changes: edit `packages/db/src/schema`, run `bun run db:generate -- --name <what>`, commit the migration. Never edit a migration that has run anywhere.
 - Use `@/*` within the web app and `@repo/*` package exports between workspaces.

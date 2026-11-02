@@ -1,12 +1,6 @@
-import { expect, test, type Page } from '@playwright/test';
+import { expect, test } from '@playwright/test';
+import { password, ready } from './helpers';
 import { linkFromEmail } from './mailpit';
-
-/* Submit buttons stay disabled until React hydrates; typing before then is reset. */
-async function ready(page: Page, button: string) {
-    await expect(page.getByRole('button', { name: button, exact: true })).toBeEnabled();
-}
-
-const password = 'correct horse battery';
 
 test('sign up, confirm the email, sign out and sign back in', async ({ page }) => {
     const email = `e2e-${crypto.randomUUID()}@example.test`;
@@ -22,8 +16,7 @@ test('sign up, confirm the email, sign out and sign back in', async ({ page }) =
     await page.goto(await linkFromEmail(email, 'Confirm your email'));
     await expect(page).toHaveURL(/\/app$/);
     await expect(page.getByRole('heading', { name: 'Hello, Ada' })).toBeVisible();
-    // The Elysia API answers for the signed-in user.
-    await expect(page.getByText(email)).toBeVisible();
+    await ready(page, 'Add');
 
     await page.getByRole('button', { name: 'Account menu' }).click();
     await page.getByRole('menuitem', { name: 'Sign out' }).click();
