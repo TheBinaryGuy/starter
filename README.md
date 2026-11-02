@@ -39,6 +39,23 @@ Don't commit or push anything. When you're done, tell me the app's URL, the Mail
 
 You need [Bun](https://bun.sh) 1.4.4 or newer and Docker.
 
+Make a repository of your own from the template and clone it with the [GitHub CLI](https://cli.github.com):
+
+```bash
+gh repo create my-app --template TheBinaryGuy/starter --private --clone
+cd my-app
+```
+
+Or take a copy without a GitHub repository:
+
+```bash
+git clone --depth 1 https://github.com/TheBinaryGuy/starter.git my-app
+cd my-app
+rm -rf .git && git init
+```
+
+Then:
+
 ```bash
 bun install
 bun run setup        # writes .env with fresh secrets
