@@ -1,0 +1,19 @@
+patches/env-runner@0.2.1.patch
+  s_157ed8b5e5e145::t_6fc20257dc677a 1-15
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "ed051056317f060f8448f75c5dc6256ee317df90",
+  "prompts": {},
+  "sessions": {
+    "s_157ed8b5e5e145": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "f6dca5c7-bd40-4aec-a8c9-1165c4647cf7",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "TheBinaryGuy <hello@thebinary.dev>"
+    }
+  }
+}
