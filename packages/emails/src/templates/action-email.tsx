@@ -104,7 +104,7 @@ export default function ActionEmail(props: ActionEmailProps) {
 }
 
 ActionEmail.PreviewProps = {
-    appName: 'Starter',
+    appName: 'App',
     preview: 'Confirm your email address.',
     heading: 'Confirm your email',
     body: 'Press the button to finish creating your account.',

@@ -5,7 +5,7 @@ import { z } from 'zod';
 export const appEnv = createEnv({
     server: {
         // The product's name, in page titles and emails.
-        APP_NAME: z.string().trim().min(1).max(60).default('Starter'),
+        APP_NAME: z.string().trim().min(1).max(60).default('App'),
         APP_ORIGIN: z
             .url()
             .refine((value) => {

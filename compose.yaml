@@ -3,9 +3,9 @@ services:
         image: postgres:18-alpine
         restart: unless-stopped
         environment:
-            POSTGRES_USER: ${POSTGRES_USER:-starter}
+            POSTGRES_USER: ${POSTGRES_USER:-postgres}
             POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Run bun run setup first}
-            POSTGRES_DB: ${POSTGRES_DB:-starter}
+            POSTGRES_DB: ${POSTGRES_DB:-postgres}
         volumes:
             - postgres_data:/var/lib/postgresql
         healthcheck:
@@ -20,7 +20,7 @@ services:
             dockerfile: packages/db/Dockerfile
             target: migrate
         environment:
-            DATABASE_URL: ${DOCKER_DATABASE_URL:-postgresql://${POSTGRES_USER:-starter}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB:-starter}}
+            DATABASE_URL: ${DOCKER_DATABASE_URL:-postgresql://${POSTGRES_USER:-postgres}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB:-postgres}}
         depends_on:
             db:
                 condition: service_healthy
@@ -37,8 +37,8 @@ services:
             NODE_ENV: production
             HOST: 0.0.0.0
             PORT: 5173
-            DATABASE_URL: ${DOCKER_DATABASE_URL:-postgresql://${POSTGRES_USER:-starter}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB:-starter}}
-            APP_NAME: ${APP_NAME:-Starter}
+            DATABASE_URL: ${DOCKER_DATABASE_URL:-postgresql://${POSTGRES_USER:-postgres}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB:-postgres}}
+            APP_NAME: ${APP_NAME:-App}
             APP_ORIGIN: ${APP_ORIGIN:?Set APP_ORIGIN}
             CSP_CONNECT_SRC: ${CSP_CONNECT_SRC:-}
             BETTER_AUTH_SECRET: ${BETTER_AUTH_SECRET:?Run bun run setup first}
