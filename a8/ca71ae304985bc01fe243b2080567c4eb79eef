@@ -1,0 +1,21 @@
+apps/web/package.json
+  s_157ed8b5e5e145::t_5dc8fdfa925bef 50
+bun.lock
+  s_157ed8b5e5e145::t_3332279e51928a 58,933,1145,1285,1553-1554
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "a8ca71ae304985bc01fe243b2080567c4eb79eef",
+  "prompts": {},
+  "sessions": {
+    "s_157ed8b5e5e145": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "f6dca5c7-bd40-4aec-a8c9-1165c4647cf7",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "TheBinaryGuy <hello@thebinary.dev>"
+    }
+  }
+}
