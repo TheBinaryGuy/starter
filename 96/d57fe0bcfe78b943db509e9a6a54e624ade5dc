@@ -1,0 +1,19 @@
+README.md
+  s_157ed8b5e5e145::t_85cedb0788edd1 3
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "96d57fe0bcfe78b943db509e9a6a54e624ade5dc",
+  "prompts": {},
+  "sessions": {
+    "s_157ed8b5e5e145": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "f6dca5c7-bd40-4aec-a8c9-1165c4647cf7",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "TheBinaryGuy <hello@thebinary.dev>"
+    }
+  }
+}
