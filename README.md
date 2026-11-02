@@ -1,6 +1,6 @@
 # Starter
 
-A full-stack TypeScript monorepo to start web projects from: TanStack Start, Elysia, Better Auth, Drizzle on Postgres, shadcn/ui on Base UI, all on Bun.
+A full-stack TypeScript monorepo to start projects from: TanStack Start, Elysia, Better Auth, Drizzle on Postgres, shadcn/ui on Base UI, all on Bun.
 
 ## What's inside
 
