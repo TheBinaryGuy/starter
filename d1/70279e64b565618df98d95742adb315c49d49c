@@ -1,0 +1,23 @@
+apps/web/src/lib/api.server.ts
+  s_157ed8b5e5e145::t_d5ddb76c6f7b6c 4,10,96-97
+apps/web/src/lib/origin-guard.test.ts
+  s_157ed8b5e5e145::t_0c138af9ef2c7e 1-56
+apps/web/src/lib/origin-guard.ts
+  s_157ed8b5e5e145::t_aba6692d3a8d31 1-22
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "d170279e64b565618df98d95742adb315c49d49c",
+  "prompts": {},
+  "sessions": {
+    "s_157ed8b5e5e145": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "f6dca5c7-bd40-4aec-a8c9-1165c4647cf7",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "TheBinaryGuy <hello@thebinary.dev>"
+    }
+  }
+}
