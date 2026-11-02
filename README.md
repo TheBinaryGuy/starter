@@ -15,15 +15,17 @@ A full-stack TypeScript monorepo to start web projects from: TanStack Start, Ely
 
 ## Start with an agent
 
-Paste this into Claude Code, Codex or another coding agent, in the folder where the project should live. Replace `<project-name>` first, or leave it and the agent will ask.
+Paste this into Claude Code, Codex or another coding agent, in the folder where the project should live. It asks you what to call the project.
 
 ```text
-Start a new project called <project-name> from the TheBinaryGuy/starter template, and get it running on this machine.
+Start a new project from the TheBinaryGuy/starter template, and get it running on this machine.
+
+Before anything else, ask me what to call the project, and wait for my answer. Use it as <project-name> below: lowercase, with hyphens instead of spaces (it becomes the repository and folder name). Use the name as I wrote it for APP_NAME.
 
 1. Check the prerequisites: Bun 1.4.4 or newer (`bun --version`), Docker running (`docker info`), and the GitHub CLI signed in (`gh auth status`). If one is missing, stop and tell me what to install.
 2. Create the repository from the template and clone it: `gh repo create <project-name> --template TheBinaryGuy/starter --private --clone`, then work inside that folder. If I can't use the template, clone https://github.com/TheBinaryGuy/starter.git into <project-name>, delete its .git folder and run `git init` instead.
 3. Read AGENTS.md and README.md before changing anything, and follow AGENTS.md from then on.
-4. Run `bun install`, then `bun run setup`, which writes .env with fresh secrets. Set APP_NAME in .env to the project's name.
+4. Run `bun install`, then `bun run setup`, which writes .env with fresh secrets. Set APP_NAME in .env to the project's name as I wrote it.
 5. Check whether ports 5173 (app), 5434 (Postgres), 1025 and 8025 (Mailpit) are already in use (`lsof -iTCP -sTCP:LISTEN -P`). For each one that is taken, pick a free port and update .env to match: PORT and APP_ORIGIN for the app; POSTGRES_PORT and the port inside DATABASE_URL for Postgres; MAILPIT_SMTP_PORT, SMTP_PORT and MAILPIT_WEB_PORT for Mailpit.
 6. Run `bun run infra:up` and `bun run db:migrate`.
 7. Run `bun run check` and `bun run test`. Both must pass; if one fails, find out why and fix it before going on.
