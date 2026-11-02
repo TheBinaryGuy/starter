@@ -1,0 +1,31 @@
+.env.example
+  s_157ed8b5e5e145::t_1689a9c631644c 1-3,9,11,13,32
+.github/workflows/ci.yml
+  s_157ed8b5e5e145::t_a4731cbdf0e317 20-22,25,33,36
+apps/web/src/routes/__root.tsx
+  s_157ed8b5e5e145::t_9bdfc132fd2bb4 47
+compose.yaml
+  s_157ed8b5e5e145::t_4aceeaa5ce0d41 6,8,23,40-41
+packages/emails/src/templates/action-email.tsx
+  s_157ed8b5e5e145::t_8a2b5514567f3f 107
+packages/env/src/app.ts
+  s_157ed8b5e5e145::t_6eb63461a4b3f7 8
+scripts/setup.ts
+  s_157ed8b5e5e145::t_0ad50926eaef2f 3-4,7-14,16-17,23-30,33,36-38,41-43
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "03e4ffc68dec391c55bcf113b052a8b896494f47",
+  "prompts": {},
+  "sessions": {
+    "s_157ed8b5e5e145": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "f6dca5c7-bd40-4aec-a8c9-1165c4647cf7",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "TheBinaryGuy <hello@thebinary.dev>"
+    }
+  }
+}
