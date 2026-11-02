@@ -1,11 +1,13 @@
 import '@/lib/server-only';
 import { auth, CLIENT_ADDRESS_HEADER, clientAddress } from '@repo/auth/server';
 import { db } from '@repo/db';
+import { appEnv } from '@repo/env/app';
 import { sanitizeFailure } from '@repo/logging';
 import { Elysia, NotFound, ParseError, ValidationError } from 'elysia';
 import { useRequest } from 'nitro/context';
 
 import { useLogger } from '@/lib/logging.server';
+import { refuseCrossSiteWrite } from '@/lib/origin-guard';
 
 /*
  * The app's own API, mounted at /api by routes/api/$.ts. Better Auth answers
@@ -91,6 +93,8 @@ export async function handleApiRequest(request: Request): Promise<Response> {
             return Response.json({ message: 'Something went wrong. Try again.' }, { status: 500 });
         }
     }
+    const refusal = refuseCrossSiteWrite(request, appEnv.APP_ORIGIN);
+    if (refusal) return Response.json({ message: refusal, code: 'cross-site' }, { status: 403 });
     if (request.method === 'HEAD') {
         const result = await apiApp.handle(
             new Request(request.url, { method: 'GET', headers: request.headers }),
