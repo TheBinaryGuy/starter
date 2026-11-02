@@ -21,10 +21,10 @@ Paste this into Claude Code, Codex or another coding agent, in the folder where 
 ```text
 Start a new project from the TheBinaryGuy/starter template, and get it running on this machine.
 
-Before anything else, ask me what to call the project, and wait for my answer. Use it as <project-name> below: lowercase, with hyphens instead of spaces (it becomes the repository and folder name). Use the name as I wrote it for APP_NAME.
+Before anything else, ask me what to call the project, and wait for my answer. Use it as <project-name> below: lowercase, with hyphens instead of spaces (it becomes the folder name). Use the name as I wrote it for APP_NAME.
 
-1. Check the prerequisites: Bun 1.4.4 or newer (`bun --version`), Docker running (`docker info`), and the GitHub CLI signed in (`gh auth status`). If one is missing, stop and tell me what to install.
-2. Create the repository from the template and clone it: `gh repo create <project-name> --template TheBinaryGuy/starter --private --clone`, then work inside that folder. If I can't use the template, clone https://github.com/TheBinaryGuy/starter.git into <project-name>, delete its .git folder and run `git init` instead.
+1. Check the prerequisites: Git (`git --version`), Bun 1.4.4 or newer (`bun --version`) and Docker running (`docker info`). If one is missing, stop and tell me what to install.
+2. Clone the starter with `git clone --depth 1 https://github.com/TheBinaryGuy/starter.git <project-name>` and work inside that folder from then on. Delete its .git folder and run `git init`, so the project starts with its own history.
 3. Read AGENTS.md and README.md before changing anything, and follow AGENTS.md from then on.
 4. Run `bun install`, then `bun run setup`, which writes .env with fresh secrets. Set APP_NAME in .env to the project's name as I wrote it.
 5. Check whether ports 5173 (app), 5434 (Postgres), 1025 and 8025 (Mailpit) are already in use (`lsof -iTCP -sTCP:LISTEN -P`). For each one that is taken, pick a free port and update .env to match: PORT and APP_ORIGIN for the app; POSTGRES_PORT and the port inside DATABASE_URL for Postgres; MAILPIT_SMTP_PORT, SMTP_PORT and MAILPIT_WEB_PORT for Mailpit.
@@ -38,16 +38,9 @@ Don't commit or push anything. When you're done, tell me the app's URL, the Mail
 
 ## Start by hand
 
-You need [Bun](https://bun.sh) 1.4.4 or newer and Docker.
+You need Git, [Bun](https://bun.sh) 1.4.4 or newer and Docker.
 
-Make a repository of your own from the template and clone it with the [GitHub CLI](https://cli.github.com):
-
-```bash
-gh repo create my-app --template TheBinaryGuy/starter --private --clone
-cd my-app
-```
-
-Or take a copy without a GitHub repository:
+Clone the starter and give it a fresh history:
 
 ```bash
 git clone --depth 1 https://github.com/TheBinaryGuy/starter.git my-app
