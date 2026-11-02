@@ -1,0 +1,61 @@
+AGENTS.md
+  s_157ed8b5e5e145::t_eac03e16906a4f 23
+README.md
+  s_157ed8b5e5e145::t_830871352589d9 8-9,100-102,109,112-123
+apps/web/src/components/todo-list.tsx
+  s_157ed8b5e5e145::t_a5239e4bbb04d5 1-224
+apps/web/src/components/ui/checkbox.tsx
+  s_157ed8b5e5e145::t_de7fde0655d085 1-25
+apps/web/src/lib/api.server.ts
+  s_157ed8b5e5e145::t_eeaf93cc8a05c1 3-4,7,53-69,86-132
+apps/web/src/routes/_authenticated/app/index.tsx
+  s_157ed8b5e5e145::t_fb08fc93855fcf 3,13,20
+e2e/auth.spec.ts
+  s_157ed8b5e5e145::t_00caec716815f4 1-2,19
+e2e/helpers.ts
+  s_157ed8b5e5e145::t_7ca411011b118d 1-25
+e2e/todos.spec.ts
+  s_157ed8b5e5e145::t_837d64e28ce9f8 1-73
+packages/db/drizzle/20261102160617_todos/migration.sql
+  s_157ed8b5e5e145::t_ba14c72dd8224a 1-12
+packages/db/drizzle/20261102160617_todos/snapshot.json
+  s_157ed8b5e5e145::t_650c544b60651b 1-255
+packages/db/package.json
+  s_157ed8b5e5e145::t_5c38364bec3953 28-29
+packages/db/src/index.ts
+  s_157ed8b5e5e145::t_7c292fcf0ec248 3-4
+packages/db/src/schema/auth.ts
+  s_157ed8b5e5e145::t_eb8895635f3c35 2
+packages/db/src/schema/columns.ts
+  s_157ed8b5e5e145::t_49a21a8f9285a4 1-10
+packages/db/src/schema/index.ts
+  s_157ed8b5e5e145::t_1360d0a5530a72 2
+packages/db/src/schema/relations.ts
+  s_157ed8b5e5e145::t_126a17f6541fdb 3,5,9,17-19
+packages/db/src/schema/todos.ts
+  s_157ed8b5e5e145::t_fb6ba0344729c7 1-28
+packages/db/src/todos.test.ts
+  s_157ed8b5e5e145::t_d40ac880e8a7b6 1-100
+packages/db/src/todos.ts
+  s_157ed8b5e5e145::t_eb553e4ff227bf 1-75
+packages/db/test/setup-db.ts
+  s_157ed8b5e5e145::t_0e9847ad1a4fa2 1-3
+packages/db/vitest.config.ts
+  s_157ed8b5e5e145::t_9b5e7f48fefa78 4-10
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "812d6c40c2b49507948f6d819ae7694dd91c33c1",
+  "prompts": {},
+  "sessions": {
+    "s_157ed8b5e5e145": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "f6dca5c7-bd40-4aec-a8c9-1165c4647cf7",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "TheBinaryGuy <hello@thebinary.dev>"
+    }
+  }
+}
