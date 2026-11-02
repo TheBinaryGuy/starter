@@ -1,0 +1,48 @@
+{
+    "name": "starter",
+    "version": "0.0.0",
+    "private": true,
+    "workspaces": [
+        "apps/*",
+        "packages/*"
+    ],
+    "type": "module",
+    "scripts": {
+        "setup": "bun scripts/setup.ts",
+        "dev": "bun --env-file=.env run turbo run dev",
+        "build": "bun --env-file=.env run turbo run build",
+        "start": "bun --env-file=.env run turbo run start",
+        "typecheck": "tsc --noEmit && turbo run typecheck",
+        "lint": "oxlint --deny-warnings .",
+        "lint:fix": "oxlint --fix .",
+        "format": "oxfmt --write .",
+        "format:check": "oxfmt --check .",
+        "check": "bun run lint && bun run format:check && bun run typecheck",
+        "test": "turbo run test",
+        "e2e": "bun --env-file=.env --bun playwright test",
+        "infra:up": "docker compose -f compose.yaml -f compose.dev.yaml up -d --wait db mailpit",
+        "infra:down": "docker compose -f compose.yaml -f compose.dev.yaml stop db mailpit",
+        "db:generate": "bun --env-file=../../.env run --cwd packages/db db:generate",
+        "db:migrate": "bun --env-file=../../.env run --cwd packages/db db:migrate",
+        "db:studio": "bun --env-file=../../.env run --cwd packages/db db:studio"
+    },
+    "devDependencies": {
+        "@playwright/test": "1.64.1",
+        "@repo/config": "workspace:*",
+        "@types/bun": "1.4.4",
+        "oxfmt": "0.75.0",
+        "oxlint": "1.90.0",
+        "oxlint-tsgolint": "7.0.2005",
+        "turbo": "2.11.10",
+        "typescript": "7.0.2",
+        "vitest": "^5.0.5"
+    },
+    "engines": {
+        "bun": ">=1.4.4"
+    },
+    "packageManager": "bun@1.4.4",
+    "patchedDependencies": {
+        "env-runner@0.2.1": "patches/env-runner@0.2.1.patch",
+        "@tanstack/router-ssr-query-core@1.169.3": "patches/@tanstack%2Frouter-ssr-query-core@1.169.3.patch"
+    }
+}

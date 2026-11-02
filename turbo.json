@@ -1,0 +1,54 @@
+{
+    "$schema": "https://turborepo.dev/schema.json",
+    "globalDependencies": ["tsconfig.base.json", "packages/config/**"],
+    "globalPassThroughEnv": [
+        "PORT",
+        "HOST",
+        "NODE_ENV",
+        "CI",
+        "DATABASE_URL",
+        "MIGRATION_DATABASE_URL",
+        "TEST_DATABASE_URL",
+        "APP_NAME",
+        "APP_ORIGIN",
+        "CSP_CONNECT_SRC",
+        "BETTER_AUTH_SECRET",
+        "TRUSTED_PROXY_HEADER",
+        "GITHUB_CLIENT_ID",
+        "GITHUB_CLIENT_SECRET",
+        "GOOGLE_CLIENT_ID",
+        "GOOGLE_CLIENT_SECRET",
+        "EMAIL_ADAPTER",
+        "EMAIL_FROM",
+        "SMTP_HOST",
+        "SMTP_PORT",
+        "SMTP_SECURE",
+        "SMTP_REQUIRE_TLS",
+        "SMTP_USER",
+        "SMTP_PASSWORD",
+        "RESEND_API_KEY"
+    ],
+    "tasks": {
+        "dev": {
+            "cache": false,
+            "persistent": true,
+            "dependsOn": ["^build"]
+        },
+        "build": {
+            "dependsOn": ["^build"],
+            "inputs": ["$TURBO_DEFAULT$", ".env*"],
+            "outputs": [".output/**"]
+        },
+        "start": {
+            "cache": false,
+            "persistent": true
+        },
+        "typecheck": {
+            "dependsOn": ["^typecheck"],
+            "outputs": []
+        },
+        "test": {
+            "outputs": []
+        }
+    }
+}

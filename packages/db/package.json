@@ -1,0 +1,44 @@
+{
+    "name": "@repo/db",
+    "version": "0.0.0",
+    "private": true,
+    "type": "module",
+    "exports": {
+        ".": {
+            "types": "./src/index.ts",
+            "default": "./src/index.ts"
+        },
+        "./schema": {
+            "types": "./src/schema/index.ts",
+            "default": "./src/schema/index.ts"
+        },
+        "./test/database": {
+            "types": "./test/database.ts",
+            "default": "./test/database.ts"
+        },
+        "./test/setup": {
+            "types": "./test/setup.ts",
+            "default": "./test/setup.ts"
+        }
+    },
+    "scripts": {
+        "typecheck": "tsc --noEmit",
+        "db:generate": "bun --bun drizzle-kit generate",
+        "db:migrate": "bun --bun drizzle-kit migrate",
+        "db:studio": "bun --bun drizzle-kit studio"
+    },
+    "dependencies": {
+        "@repo/env": "workspace:*",
+        "@repo/logging": "workspace:*",
+        "drizzle-orm": "1.0.0-rc.5",
+        "pg": "^8.23.1"
+    },
+    "devDependencies": {
+        "@repo/config": "workspace:*",
+        "@types/bun": "1.4.4",
+        "@types/pg": "^8.15.5",
+        "drizzle-kit": "1.0.0-rc.5",
+        "typescript": "7.0.2",
+        "vitest": "^5.0.5"
+    }
+}

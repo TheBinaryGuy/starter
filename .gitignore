@@ -1,0 +1,36 @@
+node_modules/
+.turbo/
+dist/
+.output/
+.nitro/
+.tanstack/
+coverage/
+*.tsbuildinfo
+.env
+.env.*
+!.env.example
+.DS_Store
+.vitest/
+.vite/
+.cache/
+*.log
+
+# Local database exports, credentials, and TLS material
+backups/
+*.dump
+*.pem
+*.key
+*.p12
+
+# Editors and OS scratch files
+Thumbs.db
+*.swp
+*~
+.idea/
+
+# Playwright
+test-results/
+playwright-report/
+
+# Claude Code local settings and session files
+.claude/

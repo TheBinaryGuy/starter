@@ -1,0 +1,77 @@
+name: starter
+
+services:
+    db:
+        image: postgres:18-alpine
+        restart: unless-stopped
+        environment:
+            POSTGRES_USER: ${POSTGRES_USER:-starter}
+            POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Run bun run setup first}
+            POSTGRES_DB: ${POSTGRES_DB:-starter}
+        volumes:
+            - postgres_data:/var/lib/postgresql
+        healthcheck:
+            test: [CMD-SHELL, 'pg_isready -U "$${POSTGRES_USER}" -d "$${POSTGRES_DB}"']
+            interval: 5s
+            timeout: 5s
+            retries: 10
+
+    migrate:
+        build:
+            context: .
+            dockerfile: packages/db/Dockerfile
+            target: migrate
+        environment:
+            DATABASE_URL: ${DOCKER_DATABASE_URL:-postgresql://${POSTGRES_USER:-starter}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB:-starter}}
+        depends_on:
+            db:
+                condition: service_healthy
+        restart: 'no'
+
+    web:
+        build:
+            context: .
+            dockerfile: apps/web/Dockerfile
+        restart: unless-stopped
+        ports:
+            - '127.0.0.1:${PORT:-5173}:5173'
+        environment:
+            NODE_ENV: production
+            HOST: 0.0.0.0
+            PORT: 5173
+            DATABASE_URL: ${DOCKER_DATABASE_URL:-postgresql://${POSTGRES_USER:-starter}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB:-starter}}
+            APP_NAME: ${APP_NAME:-Starter}
+            APP_ORIGIN: ${APP_ORIGIN:?Set APP_ORIGIN}
+            CSP_CONNECT_SRC: ${CSP_CONNECT_SRC:-}
+            BETTER_AUTH_SECRET: ${BETTER_AUTH_SECRET:?Run bun run setup first}
+            TRUSTED_PROXY_HEADER: ${TRUSTED_PROXY_HEADER:-}
+            GITHUB_CLIENT_ID: ${GITHUB_CLIENT_ID:-}
+            GITHUB_CLIENT_SECRET: ${GITHUB_CLIENT_SECRET:-}
+            GOOGLE_CLIENT_ID: ${GOOGLE_CLIENT_ID:-}
+            GOOGLE_CLIENT_SECRET: ${GOOGLE_CLIENT_SECRET:-}
+            EMAIL_ADAPTER: ${EMAIL_ADAPTER:-log}
+            EMAIL_FROM: ${EMAIL_FROM:-}
+            SMTP_HOST: ${SMTP_HOST:-}
+            SMTP_PORT: ${SMTP_PORT:-}
+            SMTP_SECURE: ${SMTP_SECURE:-}
+            SMTP_REQUIRE_TLS: ${SMTP_REQUIRE_TLS:-}
+            SMTP_USER: ${SMTP_USER:-}
+            SMTP_PASSWORD: ${SMTP_PASSWORD:-}
+            RESEND_API_KEY: ${RESEND_API_KEY:-}
+        depends_on:
+            migrate:
+                condition: service_completed_successfully
+        healthcheck:
+            test:
+                [
+                    CMD,
+                    bun,
+                    -e,
+                    "const r = await fetch('http://localhost:5173/api/ready'); process.exit(r.ok ? 0 : 1)",
+                ]
+            interval: 10s
+            timeout: 10s
+            retries: 5
+
+volumes:
+    postgres_data:

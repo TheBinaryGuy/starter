@@ -1,0 +1,29 @@
+{
+    "name": "@repo/logging",
+    "version": "0.0.0",
+    "private": true,
+    "type": "module",
+    "exports": {
+        ".": {
+            "types": "./src/index.ts",
+            "default": "./src/index.ts"
+        },
+        "./nitro": {
+            "types": "./src/nitro.ts",
+            "default": "./src/nitro.ts"
+        }
+    },
+    "scripts": {
+        "typecheck": "tsc --noEmit",
+        "test": "vitest run"
+    },
+    "dependencies": {
+        "evlog": "^2.34.0"
+    },
+    "devDependencies": {
+        "@repo/config": "workspace:*",
+        "@types/bun": "1.4.4",
+        "typescript": "7.0.2",
+        "vitest": "^5.0.5"
+    }
+}
