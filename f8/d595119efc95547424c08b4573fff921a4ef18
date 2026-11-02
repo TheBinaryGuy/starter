@@ -1,0 +1,291 @@
+.dockerignore
+  s_157ed8b5e5e145::t_6046497d942c33 1-19
+.editorconfig
+  s_566b8e0c4467a4::t_c6d6e929cfd6c7 1-9
+.env.example
+  s_157ed8b5e5e145::t_8f8d3da6c0695b 1-44
+.gitattributes
+  s_566b8e0c4467a4::t_ce6aecbaaf1970 1-2
+.github/workflows/ci.yml
+  s_157ed8b5e5e145::t_f68e84b56869b3 1-63
+.gitignore
+  s_157ed8b5e5e145::t_5928c5ea0d88fe 1-36
+.oxlintrc.json
+  s_157ed8b5e5e145::t_45d71d17bea8b9 1-13
+AGENTS.md
+  s_157ed8b5e5e145::t_037ff5be06aff6 1-28
+README.md
+  s_157ed8b5e5e145::t_66bc3d97f1c98d 1-74
+apps/web/.oxlintrc.json
+  s_566b8e0c4467a4::t_dc9e3d524d66dd 1-8
+apps/web/Dockerfile
+  s_157ed8b5e5e145::t_29d0be73cd6a4e 1-24
+apps/web/components.json
+  s_157ed8b5e5e145::t_80db9bc8a9574c 1-25
+apps/web/nitro.config.ts
+  s_157ed8b5e5e145::t_5375ab2d82bdb9 1-17
+apps/web/package.json
+  s_157ed8b5e5e145::t_789ae7c95959fa 1-57
+apps/web/public/favicon.svg
+  s_157ed8b5e5e145::t_1b0f08eb50c305 1
+apps/web/server/csp.test.ts
+  s_157ed8b5e5e145::t_c35c44357b1deb 1-43
+apps/web/server/csp.ts
+  s_157ed8b5e5e145::t_29da9997cd0dca 1-55
+apps/web/server/plugins/database.ts
+  s_157ed8b5e5e145::t_75be9180c33901 1-6
+apps/web/server/plugins/environment.ts
+  s_157ed8b5e5e145::t_1f24eede43ef6f 1-6
+apps/web/server/plugins/request-context.ts
+  s_157ed8b5e5e145::t_1e07fe100d081c 1-29
+apps/web/server/plugins/security-headers.ts
+  s_157ed8b5e5e145::t_7983513c72366d 1-43
+apps/web/src/components/auth-layout.tsx
+  s_157ed8b5e5e145::t_e155d555ee1610 1-46
+apps/web/src/components/form.tsx
+  s_157ed8b5e5e145::t_959cf5c51c76e9 1-85
+apps/web/src/components/site-header.tsx
+  s_157ed8b5e5e145::t_021728ea2d7bb5 1-20
+apps/web/src/components/social-sign-in.tsx
+  s_157ed8b5e5e145::t_1b91b9eaf204a2 1-51
+apps/web/src/components/theme-provider.tsx
+  s_157ed8b5e5e145::t_927a631ac861f6 1-37
+apps/web/src/components/theme-toggle.tsx
+  s_157ed8b5e5e145::t_f2ada2e45bf2eb 1-39
+apps/web/src/components/ui/alert-dialog.tsx
+  s_157ed8b5e5e145::t_981c614f267a4b 1-160
+apps/web/src/components/ui/alert.tsx
+  s_157ed8b5e5e145::t_95cf875a928a33 1-72
+apps/web/src/components/ui/avatar.tsx
+  s_157ed8b5e5e145::t_1f1b9f1f4874f1 1-90
+apps/web/src/components/ui/badge.tsx
+  s_157ed8b5e5e145::t_c5de9aee38f955 1-49
+apps/web/src/components/ui/button.tsx
+  s_157ed8b5e5e145::t_13463f9a9fdc0a 1-56
+apps/web/src/components/ui/card.tsx
+  s_157ed8b5e5e145::t_f4895c1fdf0c17 1-90
+apps/web/src/components/ui/dropdown-menu.tsx
+  s_157ed8b5e5e145::t_684f1478db7a93 1-257
+apps/web/src/components/ui/field.tsx
+  s_157ed8b5e5e145::t_1d01f5dd5c548a 1-230
+apps/web/src/components/ui/input.tsx
+  s_157ed8b5e5e145::t_0a0801ab8a7a5f 1-19
+apps/web/src/components/ui/label.tsx
+  s_157ed8b5e5e145::t_2d3e139b8b89f2 1-18
+apps/web/src/components/ui/separator.tsx
+  s_157ed8b5e5e145::t_e25f91bdfa3c7c 1-20
+apps/web/src/components/ui/skeleton.tsx
+  s_157ed8b5e5e145::t_eb01081bd37f65 1-13
+apps/web/src/components/ui/sonner.tsx
+  s_157ed8b5e5e145::t_fdfa9f3e80b0cd 1-44
+apps/web/src/components/ui/spinner.tsx
+  s_157ed8b5e5e145::t_71118159445c3d 1-17
+apps/web/src/components/ui/tooltip.tsx
+  s_157ed8b5e5e145::t_d96e3f82b917f1 1-53
+apps/web/src/components/user-menu.tsx
+  s_157ed8b5e5e145::t_0a8da07636f96e 1-79
+apps/web/src/lib/api-client.ts
+  s_157ed8b5e5e145::t_86eaac1cf4e4cb 1-24
+apps/web/src/lib/api.server.ts
+  s_157ed8b5e5e145::t_dace5d735c50cc 1-93
+apps/web/src/lib/auth-client.ts
+  s_157ed8b5e5e145::t_64e53ffcb57608 1-10
+apps/web/src/lib/logging.server.ts
+  s_157ed8b5e5e145::t_56b5537002ca6e 1-9
+apps/web/src/lib/server-only.ts
+  s_157ed8b5e5e145::t_4d77ee555cfe08 1-3
+apps/web/src/lib/session.ts
+  s_157ed8b5e5e145::t_db5bfe9dd92eee 1-53
+apps/web/src/lib/theme.ts
+  s_157ed8b5e5e145::t_c6abee462126bd 1-35
+apps/web/src/lib/utils.ts
+  s_157ed8b5e5e145::t_ba7e4cf98fb83c 1
+apps/web/src/lib/validation.ts
+  s_157ed8b5e5e145::t_42ca304b3361df 1-11
+apps/web/src/lib/zod-config.ts
+  s_157ed8b5e5e145::t_a64e691dd24c7b 1-9
+apps/web/src/routeTree.gen.ts
+  s_157ed8b5e5e145::t_657e958c86483e 1-276
+apps/web/src/router.tsx
+  s_157ed8b5e5e145::t_2878f7305a1a86 1-50
+apps/web/src/routes/__root.tsx
+  s_157ed8b5e5e145::t_1b725762f937af 1-135
+apps/web/src/routes/_authenticated.tsx
+  s_157ed8b5e5e145::t_7dd1ebf13efee9 1-13
+apps/web/src/routes/_authenticated/app/account.tsx
+  s_157ed8b5e5e145::t_818e620061f4cb 1-343
+apps/web/src/routes/_authenticated/app/index.tsx
+  s_157ed8b5e5e145::t_1be604b8a4896a 1-47
+apps/web/src/routes/_authenticated/app/route.tsx
+  s_157ed8b5e5e145::t_4b9caa3be45243 1-43
+apps/web/src/routes/api/$.ts
+  s_157ed8b5e5e145::t_51c8b9abb2f78d 1-10
+apps/web/src/routes/forgot-password/route.tsx
+  s_157ed8b5e5e145::t_730f717bb7c72d 1-101
+apps/web/src/routes/index.tsx
+  s_157ed8b5e5e145::t_ff7665b71f35dc 1-61
+apps/web/src/routes/login/route.tsx
+  s_157ed8b5e5e145::t_04a41237cba4e9 1-137
+apps/web/src/routes/register/route.tsx
+  s_157ed8b5e5e145::t_d9fafa1ece4852 1-137
+apps/web/src/routes/reset-password/route.tsx
+  s_157ed8b5e5e145::t_3dcba15b39c3a2 1-89
+apps/web/src/start.ts
+  s_157ed8b5e5e145::t_e3a424a6c7da26 1-25
+apps/web/src/styles.css
+  s_157ed8b5e5e145::t_0c174116f657de 1-130
+apps/web/src/test/setup.ts
+  s_157ed8b5e5e145::t_39d6d7b59b18ec 1
+apps/web/tsconfig.json
+  s_157ed8b5e5e145::t_b98ebbc225591b 1-19
+apps/web/vite.config.ts
+  s_157ed8b5e5e145::t_dc59cf9c89322d 1-46
+apps/web/vitest.config.ts
+  s_157ed8b5e5e145::t_e20418ca89a631 1-14
+bun.lock
+  s_157ed8b5e5e145::t_b22d0c67686017 1-1676
+compose.dev.yaml
+  s_157ed8b5e5e145::t_414a535d1da56c 1-15
+compose.yaml
+  s_157ed8b5e5e145::t_55d1c3c726a350 1-77
+e2e/auth.spec.ts
+  s_157ed8b5e5e145::t_1d3e2418d9fb00 1-58
+e2e/mailpit.ts
+  s_157ed8b5e5e145::t_0ab34985f6ce30 1-29
+oxfmt.config.ts
+  s_157ed8b5e5e145::t_b76634bff03e21 1-3
+package.json
+  s_157ed8b5e5e145::t_feabdfe44f3b3f 1-48
+packages/auth/package.json
+  s_157ed8b5e5e145::t_ffbb0612286686 1-28
+packages/auth/src/server.test.ts
+  s_157ed8b5e5e145::t_4a8f63a7642b78 1-146
+packages/auth/src/server.ts
+  s_157ed8b5e5e145::t_7f7de47c0ecfec 1-103
+packages/auth/test/setup-db.ts
+  s_157ed8b5e5e145::t_f93e43b9d7db4a 1-3
+packages/auth/test/setup-env.ts
+  s_157ed8b5e5e145::t_853f8132ea7b20 1-13
+packages/auth/tsconfig.json
+  s_157ed8b5e5e145::t_2483852aaadc03 1-5
+packages/auth/vitest.config.ts
+  s_157ed8b5e5e145::t_f46ab6629f9156 1-11
+packages/config/oxfmt.ts
+  s_157ed8b5e5e145::t_c1575da4977701 1-20
+packages/config/oxlint.json
+  s_566b8e0c4467a4::t_5724148aa7c3f8 1-11
+packages/config/package.json
+  s_157ed8b5e5e145::t_50a1b78a3d9ffe 1-17
+packages/config/tsconfig.json
+  s_157ed8b5e5e145::t_65f545a748dd71 1
+packages/db/Dockerfile
+  s_157ed8b5e5e145::t_ea5060c712589a 1-26
+packages/db/drizzle.config.ts
+  s_157ed8b5e5e145::t_32e4ee68006103 1-9
+packages/db/drizzle/20261102140053_auth/migration.sql
+  s_566b8e0c4467a4::t_f8fca9ad218874 1-51
+packages/db/drizzle/20261102140053_auth/snapshot.json
+  s_566b8e0c4467a4::t_248fe813671b89 1-822
+packages/db/package.json
+  s_157ed8b5e5e145::t_23355cc39fcdfb 1-44
+packages/db/src/client.ts
+  s_157ed8b5e5e145::t_d5490f22ba8cda 1-13
+packages/db/src/index.ts
+  s_157ed8b5e5e145::t_ab248638a4a2d5 1-2
+packages/db/src/schema/auth.ts
+  s_566b8e0c4467a4::t_f6009e86bb38bd 1-74
+packages/db/src/schema/index.ts
+  s_157ed8b5e5e145::t_14da7f55d2e0e7 1-2
+packages/db/src/schema/relations.ts
+  s_157ed8b5e5e145::t_6c6a44fef61bf8 1-15
+packages/db/test/database.ts
+  s_157ed8b5e5e145::t_d3878d32b8542a 1-100
+packages/db/test/setup.ts
+  s_157ed8b5e5e145::t_81698d0e116a13 1-5
+packages/db/tsconfig.json
+  s_157ed8b5e5e145::t_6d97565ace5c77 1-5
+packages/db/vitest.config.ts
+  s_157ed8b5e5e145::t_9fd2544af3f20d 1-5
+packages/emails/package.json
+  s_157ed8b5e5e145::t_d433c2f53df229 1-35
+packages/emails/src/adapter.ts
+  s_157ed8b5e5e145::t_1a0a3424562f59 1-58
+packages/emails/src/index.test.tsx
+  s_157ed8b5e5e145::t_804afe60aa2a98 1-21
+packages/emails/src/index.tsx
+  s_157ed8b5e5e145::t_720845a1ad4d7a 1-43
+packages/emails/src/templates/action-email.tsx
+  s_157ed8b5e5e145::t_557d1f44e39c82 1-114
+packages/emails/tsconfig.json
+  s_157ed8b5e5e145::t_75e8ac5da6fc5d 1-5
+packages/emails/vitest.config.ts
+  s_157ed8b5e5e145::t_0b5cd4c4c46d36 1-5
+packages/env/package.json
+  s_157ed8b5e5e145::t_cdfc26a32641d8 1-25
+packages/env/src/app.ts
+  s_157ed8b5e5e145::t_0d30434ff6b55a 1-31
+packages/env/src/auth.ts
+  s_157ed8b5e5e145::t_b06a9a45a78737 1-35
+packages/env/src/db.ts
+  s_157ed8b5e5e145::t_311c3fb1d9b78b 1-15
+packages/env/src/email.ts
+  s_157ed8b5e5e145::t_fa8ba7f849e1a7 1-44
+packages/env/src/server.ts
+  s_157ed8b5e5e145::t_a774cddf5517db 1-10
+packages/env/tsconfig.json
+  s_157ed8b5e5e145::t_c0a91272cd662f 1-5
+packages/logging/package.json
+  s_566b8e0c4467a4::t_71ca86959b43ab 1-29
+packages/logging/src/index.ts
+  s_566b8e0c4467a4::t_4d549e29af4f69 1-9
+packages/logging/src/nitro.ts
+  s_566b8e0c4467a4::t_57d1e275da1ad8 1-78
+packages/logging/src/privacy.test.ts
+  s_566b8e0c4467a4::t_b7f67d7c4f870f 1-55
+packages/logging/src/privacy.ts
+  s_566b8e0c4467a4::t_d1a325c7423878 1-123
+packages/logging/tsconfig.json
+  s_566b8e0c4467a4::t_625a13a6030666 1-5
+packages/logging/vitest.config.ts
+  s_566b8e0c4467a4::t_c2eeea55536db4 1-5
+patches/@tanstack%2Frouter-ssr-query-core@1.169.3.patch
+  s_566b8e0c4467a4::t_5a7346118b99af 1-49
+patches/env-runner@0.2.1.patch
+  s_566b8e0c4467a4::t_9649648965b91c 1-15
+playwright.config.ts
+  s_157ed8b5e5e145::t_ca1857a2c7f994 1-26
+scripts/setup.ts
+  s_157ed8b5e5e145::t_2d47c31d42c947 1-24
+tsconfig.base.json
+  s_157ed8b5e5e145::t_c33d575f8158b3 1-17
+tsconfig.json
+  s_157ed8b5e5e145::t_8ce851f93f251c 1-14
+turbo.json
+  s_157ed8b5e5e145::t_1ef22d1b4be04e 1-54
+vitest.config.ts
+  s_157ed8b5e5e145::t_3e3bccbb38bd4f 1-8
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "f8d595119efc95547424c08b4573fff921a4ef18",
+  "prompts": {},
+  "sessions": {
+    "s_157ed8b5e5e145": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "f6dca5c7-bd40-4aec-a8c9-1165c4647cf7",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "TheBinaryGuy <hello@thebinary.dev>"
+    },
+    "s_566b8e0c4467a4": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "6dac3959-035d-4ca2-88ce-5a4e2c0efc5a",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "TheBinaryGuy <hello@thebinary.dev>"
+    }
+  }
+}
