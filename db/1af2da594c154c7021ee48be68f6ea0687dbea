@@ -1,0 +1,23 @@
+LICENSE
+  s_157ed8b5e5e145::t_b210004c0926ca 1-21
+README.md
+  s_157ed8b5e5e145::t_c4eb130c6df822 75-78
+package.json
+  s_157ed8b5e5e145::t_44fe0133470665 5
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "db1af2da594c154c7021ee48be68f6ea0687dbea",
+  "prompts": {},
+  "sessions": {
+    "s_157ed8b5e5e145": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "f6dca5c7-bd40-4aec-a8c9-1165c4647cf7",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "TheBinaryGuy <hello@thebinary.dev>"
+    }
+  }
+}
